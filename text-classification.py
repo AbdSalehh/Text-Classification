@@ -16,7 +16,7 @@ stop_words.add('said')
 stop_words.add('mr')
 
 BASE_DIR = './dataset/'
-LABELS = ['business', 'entertainment', 'politics', 'sport', 'tech']
+LABELS = ['Business', 'Entertainment', 'Politics', 'Sport', 'Technology']
 
 def create_data_set():
     with open('data.txt', 'w', encoding='utf8') as outfile:
@@ -109,22 +109,26 @@ def train_classifier(docs):
     pickle.dump(vectorizer, open(vec_filename, "wb"))
 
 def classify(text):
-    clf_filename = 'naive_bayes_classifier.pkl'
-    nb_clf = pickle.load(open(clf_filename, 'rb'))
+    def in_classify():
+        clf_filename = 'naive_bayes_classifier.pkl'
+        nb_clf = pickle.load(open(clf_filename, 'rb'))
 
-    vec_filename = 'count_vectorizer.pkl'
-    vectorizer = pickle.load(open(vec_filename, "rb"))
+        vec_filename = 'count_vectorizer.pkl'
+        vectorizer = pickle.load(open(vec_filename, "rb"))
 
-    pred = nb_clf.predict(vectorizer.transform([text]))
+        pred = nb_clf.predict(vectorizer.transform([text]))
 
-    print(pred[0])
+        print(pred[0])
+    return in_classify()
 
 if __name__ == '__main__':
     # create_data_set()
     # docs = setup_docs()
     #
     # train_classifier(docs)
-    new_doc = "Trump's endorsement of vaccines aligns with most Republicans' views -- but it may be an uphill battle to convince the holdouts"
+    # new_doc = "Tiktok outs Google to be top online destination"
+    new_doc = input("Type news text here : ")
+    print("The news category is")
     classify(new_doc)
 
     # print_frequency_dist(docs)
