@@ -126,6 +126,7 @@ if __name__ == '__main__':
     # docs = setup_docs()
     #
     # train_classifier(docs)
+    # example news text : Leicester shock Liverpool as Salah misses penalty
     # new_doc = "Tiktok outs Google to be top online destination"
     new_doc = input("Type news text here : ")
     print("The news category is")
